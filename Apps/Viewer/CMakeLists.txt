@@ -11,6 +11,7 @@ find_package(Qt5 COMPONENTS
         OpenGL
         PrintSupport
         REQUIRED)
+find_package (Eigen3 REQUIRED)
 
 file(GLOB_RECURSE CPP_HEAD_FILES CONFIGURE_DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/*.h)
 file(GLOB_RECURSE CPP_SOUCE_FILES CONFIGURE_DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/*.cpp)
@@ -33,6 +34,7 @@ Qt5::Gui
 Qt5::Widgets
 Qt5::OpenGL
 Qt5::PrintSupport
+Eigen3::Eigen
 )
 
 target_include_directories(
