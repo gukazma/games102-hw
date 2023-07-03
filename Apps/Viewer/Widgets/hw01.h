@@ -8,5 +8,8 @@ public:
     explicit HW01(QWidget* parent = nullptr);
     ~HW01();
 
+protected:
+    void mousePressEvent(QMouseEvent* event) override;
+
 private:
 };

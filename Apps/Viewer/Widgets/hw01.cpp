@@ -22,3 +22,21 @@ HW01::HW01(QWidget* parent)
 }
 
 HW01::~HW01() {}
+
+void HW01::mousePressEvent(QMouseEvent* event)
+{
+    if (event->button() == Qt::LeftButton) {
+        // 获取鼠标点击位置的坐标
+        double x     = xAxis->pixelToCoord(event->pos().x());
+        double y     = yAxis->pixelToCoord(event->pos().y());
+        auto   point = this->addGraph();
+        point->addData(x, y);
+        point->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssCircle, Qt::red, Qt::white, 8));
+        // 在这里处理选择点的逻辑
+        // 您可以在这里添加代码来记录或使用选定的点坐标
+        this->replot();
+    }
+
+    // 将鼠标事件传递给父类处理
+    QCustomPlot::mousePressEvent(event);
+}
