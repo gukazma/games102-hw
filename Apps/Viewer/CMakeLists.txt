@@ -9,6 +9,7 @@ find_package(Qt5 COMPONENTS
         Gui
         Widgets
         OpenGL
+        PrintSupport
         REQUIRED)
 
 file(GLOB_RECURSE CPP_HEAD_FILES CONFIGURE_DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/*.h)
@@ -31,6 +32,7 @@ Qt5::Core
 Qt5::Gui
 Qt5::Widgets
 Qt5::OpenGL
+Qt5::PrintSupport
 )
 
 target_include_directories(
