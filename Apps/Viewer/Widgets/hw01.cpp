@@ -33,41 +33,47 @@ void HW01::mousePressEvent(QMouseEvent* event)
         auto point = this->addGraph();
         point->addData(x, y);
         point->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssCircle, Qt::red, Qt::white, 8));
+        auto c = powerBasisFitting(m_xValues, m_yValues);
+        // generate some data:
+        QVector<double> xs(101), ys(101);   // initialize with entries 0..100
+        for (int i = 0; i < 101; ++i) {
+            xs[i] = i / 50.0 - 1;           // x goes from -1 to 1
+            for (size_t j = 0; j < c.size(); j++) {
+                ys[i] += c[j] * std::pow(xs[i], j);
+            }
+        }
+        this->graph(0)->setData(xs, ys);
         this->replot();
-        powerBasisFitting(m_yValues, m_yValues, 10);
     }
     QCustomPlot::mousePressEvent(event);
 }
 
 Eigen::VectorXd HW01::powerBasisFitting(const std::vector<float>& xValues,
-                                        const std::vector<float>& yValues, int degree)
+                                        const std::vector<float>& yValues)
 {
     int numPoints = xValues.size();
-
-    if (numPoints < degree + 1) {
-        std::cout << "Error: Insufficient number of points for fitting." << std::endl;
+    if (numPoints <= 1) {
         return Eigen::VectorXd();
     }
-
     // 构建矩阵A和向量b
-    Eigen::MatrixXd A(numPoints, degree + 1);
+    Eigen::MatrixXd A(numPoints, numPoints);
     Eigen::VectorXd b(numPoints);
 
     for (int i = 0; i < numPoints; i++) {
         double x = xValues[i];
         b(i)     = yValues[i];
 
-        for (int j = 0; j <= degree; j++) {
+        for (int j = 0; j < numPoints; j++) {
             A(i, j) = std::pow(x, j);
         }
     }
-
+    auto inverse = A.inverse();
     // 使用最小二乘法求解系数向量c
-    Eigen::VectorXd c = A.fullPivLu().solve(b);
+    Eigen::VectorXd c = inverse * b;
 
     // 输出拟合结果
     std::cout << "Fitted coefficients (from c0 to cn): ";
-    for (int i = 0; i <= degree; i++) {
+    for (int i = 0; i < numPoints; i++) {
         std::cout << c(i) << " ";
     }
     std::cout << std::endl;

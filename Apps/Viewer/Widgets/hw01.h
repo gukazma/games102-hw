@@ -16,7 +16,7 @@ protected:
 
 private:
     Eigen::VectorXd    powerBasisFitting(const std::vector<float>& xValues,
-                                         const std::vector<float>& yValues, int degree);
+                                         const std::vector<float>& yValues);
     std::vector<float> m_xValues;
     std::vector<float> m_yValues;
 };
