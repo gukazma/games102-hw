@@ -16,7 +16,6 @@ public:
     ~MainWindow();
 
 private slots:
-    void slot_show();
 
 private:
     Ui::MainWindow* ui;
