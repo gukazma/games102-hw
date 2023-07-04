@@ -28,9 +28,16 @@
         </size>
        </property>
        <property name="title">
-        <string>Homeworks</string>
+        <string/>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_2">
+        <item>
+         <widget class="QLabel" name="label_3">
+          <property name="text">
+           <string>HomeWorks</string>
+          </property>
+         </widget>
+        </item>
         <item>
          <widget class="QListWidget" name="listWidget">
           <property name="maximumSize">
@@ -45,6 +52,16 @@
            </property>
           </item>
          </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="label_2">
+          <property name="text">
+           <string>Options</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QTableWidget" name="tableWidget"/>
         </item>
        </layout>
       </widget>
