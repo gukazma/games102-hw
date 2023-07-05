@@ -15,6 +15,9 @@ public:
     explicit ProjectWidget(QWidget* parent = nullptr);
     ~ProjectWidget();
 
+public slots:
+    void slot_update();
+
 private:
     Ui::ProjectWidget* ui;
 };

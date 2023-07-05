@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<homeworks>
+    <hw id="1">
+        <title>Home work 1</title>
+        <algorithm>Power basis function</algorithm>
+        <algorithm>Gauss basis function</algorithm>
+    </hw>
+    <hw id="2">
+        <title>Home work 2</title>
+        <algorithms>RBF network</algorithms>
+    </hw>
+</homeworks>
