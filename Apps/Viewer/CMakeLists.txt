@@ -13,6 +13,7 @@ find_package(Qt5 COMPONENTS
         REQUIRED)
 find_package (Eigen3 REQUIRED)
 find_package(Boost COMPONENTS filesystem system thread REQUIRED)
+find_package(qt5advanceddocking REQUIRED HINTS "D:/ThirdParty/QtADS")
 
 file(GLOB_RECURSE CPP_HEAD_FILES CONFIGURE_DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/*.h)
 file(GLOB_RECURSE CPP_SOUCE_FILES CONFIGURE_DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/*.cpp)
@@ -42,6 +43,7 @@ Boost::system
 Boost::filesystem
 Boost::dynamic_linking
 Boost::thread
+ads::qt5advanceddocking
 )
 
 target_include_directories(
